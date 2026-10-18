@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Light Mode */
+  --rs-bg: #F7F7F2;
+  --rs-card: #FFFFFF;
+  --rs-card-hover: #F1F3F0;
+  --rs-card-active: #E8EDE8;
+  --rs-text: #202520;
+  --rs-text-secondary: #4A554E;
+  --rs-text-muted: #6B7B70;
+  --rs-accent: #176B50;
+  --rs-accent-hover: #0f5440;
+  --rs-accent-light: #E8F3EE;
+  --rs-border: #E5E7DF;
+  --rs-border-hover: #D1D5CD;
+  --rs-muted-bg: #F1F3F0;
+  --rs-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+  --rs-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+  --rs-success: #10b981;
+  --rs-neutral: #f59e0b;
+  --rs-error: #ef4444;
+  --rs-scrollbar-track: #E5E7DF;
+  --rs-scrollbar-thumb: #B9C4BA;
+}
+
+.dark {
+  /* Dark Mode */
+  --rs-bg: #151A19;
+  --rs-card: #202725;
+  --rs-card-hover: #2A352E;
+  --rs-card-active: #37443E;
+  --rs-text: #F1F5F2;
+  --rs-text-secondary: #A4B2AA;
+  --rs-text-muted: #7A8B82;
+  --rs-accent: #77D9B0;
+  --rs-accent-hover: #5fc69e;
+  --rs-accent-light: #1F3A30;
+  --rs-border: #37443E;
+  --rs-border-hover: #4A5D50;
+  --rs-muted-bg: #2A352E;
+  --rs-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --rs-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --rs-success: #10b981;
+  --rs-neutral: #f59e0b;
+  --rs-error: #ef4444;
+  --rs-scrollbar-track: #1F2A24;
+  --rs-scrollbar-thumb: #4A5D50;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  background-color: var(--rs-bg);
+  color: var(--rs-text);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--rs-scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--rs-scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rs-border-hover);
+}
+
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.theme-transition {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
