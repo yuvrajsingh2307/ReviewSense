@@ -30,14 +30,14 @@ export function TopNav({ currentPage, onNavigate }: TopNavProps) {
       {/* Mobile overlay */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+          className="fixed inset-0 bg-black/70 z-[9998] lg:hidden"
           onClick={() => setMobileMenuOpen(false)}
         />
       )}
 
       {/* Top navigation bar */}
       <header
-        className="sticky top-0 z-30 border-b border-[var(--rs-border)] bg-[var(--rs-card)]/95 backdrop-blur-sm theme-transition"
+        className="sticky top-0 z-[9999] border-b border-[var(--rs-border)] bg-[var(--rs-card)] theme-transition"
       >
         <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center gap-3">
@@ -73,54 +73,54 @@ export function TopNav({ currentPage, onNavigate }: TopNavProps) {
           {/* Mobile menu button */}
           <div className="lg:hidden">
             <button
-              onClick={() => setMobileMenuOpen(true)}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg text-[var(--rs-text)] hover:bg-[var(--rs-card-hover)] transition-colors theme-transition"
-              aria-label="Open menu"
+              aria-label="Toggle menu"
             >
-              <Menu className="w-5 h-5" />
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
-
-        {/* Mobile drawer */}
-        {mobileMenuOpen && (
-          <div className="fixed inset-0 z-50 lg:hidden flex flex-col theme-transition">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--rs-border)] bg-[var(--rs-card)]">
-              <div className="flex items-center gap-2">
-                <Brain className="w-6 h-6 text-[var(--rs-accent)]" />
-                <span className="font-bold text-[var(--rs-text)] text-lg">ReviewSense</span>
-              </div>
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="p-2 rounded-lg text-[var(--rs-text)] hover:bg-[var(--rs-card-hover)] transition-colors"
-                aria-label="Close menu"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <nav className="flex-1 px-6 py-4 space-y-2 overflow-y-auto">
-              {navItems.map(({ page, label, icon: Icon }) => (
-                <button
-                  key={page}
-                  onClick={() => handleNav(page)}
-                  className={clsx(
-                    'flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors duration-200 theme-transition',
-                    currentPage === page
-                      ? 'text-[var(--rs-accent)] bg-[var(--rs-accent-light)]/50 border-r-2 border-[var(--rs-accent)]'
-                      : 'text-[var(--rs-text-muted)] hover:text-[var(--rs-text)] hover:bg-[var(--rs-card-hover)]'
-                  )}
-                >
-                  <Icon className="w-5 h-5" />
-                  <span className="font-medium">{label}</span>
-                </button>
-              ))}
-            </nav>
-            <div className="p-6 border-t border-[var(--rs-border)] bg-[var(--rs-card)]">
-              <ThemeToggle />
-            </div>
-          </div>
-        )}
       </header>
+
+      {/* Mobile drawer */}
+      {mobileMenuOpen && (
+        <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] z-[9999] lg:hidden flex flex-col bg-[var(--rs-card)] border-l border-[var(--rs-border)] shadow-xl theme-transition">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--rs-border)]">
+            <div className="flex items-center gap-2">
+              <Brain className="w-6 h-6 text-[var(--rs-accent)]" />
+              <span className="font-bold text-[var(--rs-text)] text-lg">ReviewSense</span>
+            </div>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 rounded-lg text-[var(--rs-text)] hover:bg-[var(--rs-card-hover)] transition-colors"
+              aria-label="Close menu"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+          <nav className="flex-1 px-6 py-6 space-y-2 overflow-y-auto">
+            {navItems.map(({ page, label, icon: Icon }) => (
+              <button
+                key={page}
+                onClick={() => handleNav(page)}
+                className={clsx(
+                  'flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors duration-200 theme-transition w-full',
+                  currentPage === page
+                    ? 'text-[var(--rs-accent)] bg-[var(--rs-accent-light)]/50 border-r-2 border-[var(--rs-accent)]'
+                    : 'text-[var(--rs-text-muted)] hover:text-[var(--rs-text)] hover:bg-[var(--rs-card-hover)]'
+                )}
+              >
+                <Icon className="w-5 h-5" />
+                <span className="font-medium">{label}</span>
+              </button>
+            ))}
+          </nav>
+          <div className="p-6 border-t border-[var(--rs-border)]">
+            <ThemeToggle />
+          </div>
+        </div>
+      )}
     </>
   );
 }

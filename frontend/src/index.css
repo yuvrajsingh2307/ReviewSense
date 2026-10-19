@@ -38,7 +38,7 @@
   --rs-text-secondary: #A4B2AA;
   --rs-text-muted: #7A8B82;
   --rs-accent: #77D9B0;
-  --rs-accent-hover: #5fc69e;
+  --rs-accent-hover: #5fcda5;
   --rs-accent-light: #1F3A30;
   --rs-border: #37443E;
   --rs-border-hover: #4A5D50;
@@ -60,6 +60,7 @@
 
 html {
   transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -67,6 +68,12 @@ body {
   color: var(--rs-text);
   min-height: 100vh;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -83,19 +90,7 @@ body {
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--rs-border-hover);
-}
-
-.animate-spin-slow {
-  animation: spin 3s linear infinite;
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.theme-transition {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+table {
+  table-layout: fixed;
+  width: 100%;
 }

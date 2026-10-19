@@ -19,9 +19,9 @@ function App() {
     switch (currentPage) {
       case 'dashboard':
         return (
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <DashboardOverview stats={getStats()} onNavigate={setCurrentPage} />
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
               <SentimentDistribution stats={getStats()} />
               <RecentReviews
                 reviews={reviews}
@@ -50,7 +50,7 @@ function App() {
       <div className="min-h-screen bg-[var(--rs-bg)] text-[var(--rs-text)] transition-colors duration-300">
         <TopNav currentPage={currentPage} onNavigate={setCurrentPage} />
         <main className="min-h-screen transition-all duration-300">
-          <div className="px-4 sm:px-6 lg:px-8 py-6">
+          <div className="px-4 sm:px-6 lg:px-8 py-4 sm:py-6 overflow-x-hidden">
             {renderPage()}
           </div>
         </main>
